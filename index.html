@@ -1,0 +1,360 @@
+<title>Real Life Week</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: off-grid poster. Huge type with a red bar and a blurred red sun, then a scrolling column that shifts left and right like template slides. */
+:root {
+  --bg: #f1f0f2;
+  --card: #ffffff;
+  --fg: #101010;
+  --muted: #66626b;
+  --line: #d8d5db;
+  --red: #e8312f;
+  --on-red: #ffffff;
+  --display: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --body: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --mono: "DM Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121114; --card: #1c1a1f; --fg: #f3f1f4; --muted: #a29ea8; --line: #2e2b33; --red: #ff4a44; --on-red: #121114;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121114; --card: #1c1a1f; --fg: #f3f1f4; --muted: #a29ea8; --line: #2e2b33; --red: #ff4a44; --on-red: #121114;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--body); font-size: 17px; line-height: 1.55;
+  padding-block: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  overflow-x: hidden;
+}
+.wrap { max-width: 1120px; margin: 0 auto; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; border-radius: 4px; }
+.label { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+/* HERO */
+.hero { position: relative; padding-block: clamp(36px, 8vw, 96px) clamp(40px, 7vw, 80px); }
+.sun {
+  position: absolute; right: -2%; top: 6%;
+  width: clamp(190px, 38vw, 460px); aspect-ratio: 1; max-width: 100%;
+  border-radius: 50%; background: var(--red); filter: blur(16px); opacity: .95;
+  animation: drift 9s ease-in-out infinite alternate;
+}
+@keyframes drift { from { transform: translate(0, 0) scale(1); } to { transform: translate(-14px, 18px) scale(1.04); } }
+.plus { position: absolute; font-family: var(--mono); font-size: 18px; color: var(--fg); }
+.p1 { left: 46%; top: 12%; } .p2 { right: 6%; bottom: 22%; } .p3 { left: 8%; bottom: 8%; }
+h1 {
+  position: relative; margin: 0; font-family: var(--display); font-weight: 800;
+  font-size: clamp(3.1rem, 15.5vw, 10.5rem); line-height: .86; letter-spacing: -.045em;
+}
+h1 .l2 { display: block; padding-left: clamp(0px, 9vw, 120px); }
+h1 .bar { position: relative; display: inline-block; z-index: 0; }
+h1 .bar::before {
+  content: ""; position: absolute; z-index: -1; left: -7%; right: 22%; bottom: 6%; height: 24%;
+  background: var(--red); transform-origin: left; animation: wipe .9s .2s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes wipe { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.hero-sub { position: relative; margin: clamp(28px, 5vw, 56px) 0 0; max-width: 24ch; font-size: clamp(1.25rem, 3.2vw, 1.8rem); font-weight: 600; line-height: 1.2; letter-spacing: -.01em; }
+.hero-meta { position: relative; margin-top: 18px; }
+.hero-meta a.go {
+  display: inline-block; margin-top: 22px; padding: 14px 22px; background: var(--fg); color: var(--bg);
+  font-weight: 600; text-decoration: none; border-radius: 2px; transition: transform .2s, background .2s;
+}
+.hero-meta a.go:hover { background: var(--red); color: var(--on-red); transform: translateY(-2px); }
+
+section { padding-block: clamp(44px, 8vw, 96px); border-top: 1px solid var(--line); }
+h2 { margin: 12px 0 0; font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 6vw, 3.6rem); line-height: .98; letter-spacing: -.035em; max-width: 14ch; text-wrap: balance; }
+
+/* PROBLEM */
+.problem { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 5vw, 72px); align-items: start; }
+.big { font-family: var(--display); font-weight: 800; font-size: clamp(5rem, 19vw, 12rem); line-height: .8; letter-spacing: -.06em; }
+.big small { font-size: .28em; letter-spacing: -.02em; margin-left: .08em; font-weight: 600; }
+.big-note { margin: 16px 0 0; max-width: 22ch; color: var(--muted); }
+.facts { list-style: none; margin: 0; padding: 0; }
+.facts li { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.facts li:first-child { padding-top: 0; }
+.facts b { font-weight: 600; font-size: 1.12rem; line-height: 1.3; }
+.facts b em { font-style: normal; background: var(--red); color: var(--on-red); padding: 0 .3em; }
+.facts span { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .04em; }
+.why { margin: 28px 0 0; font-size: 1.05rem; max-width: 46ch; }
+
+/* DAY CHECK */
+.tool { margin-top: 36px; display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(24px, 5vw, 64px); align-items: start; }
+.tool-card { background: var(--card); padding: clamp(20px, 4vw, 36px); border: 1px solid var(--line); }
+.hours { display: flex; align-items: baseline; gap: 10px; }
+.hours output { font-family: var(--display); font-weight: 800; font-size: clamp(3.6rem, 10vw, 6rem); line-height: .9; letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
+.hours span { font-weight: 500; color: var(--muted); }
+input[type=range] { width: 100%; margin: 22px 0 8px; accent-color: var(--red); height: 28px; }
+.split { display: flex; height: 44px; margin-top: 18px; border: 1px solid var(--fg); }
+.split .on { background: var(--red); transition: width .25s ease; min-width: 0; }
+.split .off { background: transparent; flex: 1; min-width: 0; }
+.split-l { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.verdict { margin: 18px 0 0; font-weight: 600; min-height: 3.1em; }
+.apps h3 { margin: 0 0 12px; font-size: 1.05rem; font-weight: 600; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  font: inherit; font-weight: 500; padding: 10px 16px; background: transparent; color: var(--fg);
+  border: 1px solid var(--fg); border-radius: 999px; cursor: pointer; transition: background .2s, color .2s;
+}
+.chip:hover { background: var(--line); }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+.tip { margin-top: 18px; padding: 18px 20px; background: var(--red); color: var(--on-red); font-weight: 600; font-size: 1.05rem; line-height: 1.35; min-height: 5.4em; }
+
+/* WEEK */
+.q { margin: 14px 0 0; font-size: 1.1rem; max-width: 40ch; color: var(--muted); }
+.q b { color: var(--fg); font-weight: 600; }
+.progress { margin-top: 28px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.progress .count { font-family: var(--display); font-weight: 800; font-size: 2.6rem; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+.meter { flex: 1; min-width: 160px; height: 10px; background: var(--line); }
+.meter i { display: block; height: 100%; width: 0; background: var(--red); transition: width .4s ease; }
+.done-msg { margin: 14px 0 0; font-weight: 600; min-height: 1.6em; }
+.days { margin-top: 36px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; }
+.day { grid-column: span 6; position: relative; display: block; cursor: pointer; }
+.day:nth-child(4n+1) { grid-column: 1 / span 7; }
+.day:nth-child(4n+2) { grid-column: 8 / span 5; }
+.day:nth-child(4n+3) { grid-column: 1 / span 5; }
+.day:nth-child(4n+4) { grid-column: 6 / span 7; }
+.day:last-child { grid-column: 3 / span 8; }
+.day input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.day .in {
+  height: 100%; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px 18px; align-items: start;
+  padding: 22px; background: var(--card); border: 1px solid var(--line); transition: background .25s, color .25s, border-color .25s, transform .25s;
+}
+.day:hover .in { transform: translateY(-3px); border-color: var(--fg); }
+.day .n { font-family: var(--display); font-weight: 800; font-size: 3.2rem; line-height: .85; letter-spacing: -.05em; color: transparent; -webkit-text-stroke: 1.5px var(--fg); }
+.day h3 { margin: 0; font-size: 1.15rem; font-weight: 600; line-height: 1.25; }
+.day p { margin: 6px 0 0; color: var(--muted); font-size: .98rem; line-height: 1.45; }
+.day .box { width: 28px; height: 28px; border: 2px solid var(--fg); display: grid; place-items: center; font-weight: 800; color: transparent; }
+.day input:checked + .in { background: var(--red); color: var(--on-red); border-color: var(--red); }
+.day input:checked + .in p { color: var(--on-red); }
+.day input:checked + .in .n { -webkit-text-stroke-color: var(--on-red); }
+.day input:checked + .in .box { border-color: var(--on-red); color: var(--on-red); }
+.day input:focus-visible + .in { outline: 3px solid var(--fg); outline-offset: 3px; }
+.reset { margin-top: 24px; font: inherit; background: none; border: 0; padding: 4px 0; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.reset:hover { color: var(--fg); }
+
+/* SOURCES */
+.src ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.src li { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.src a { color: var(--fg); }
+footer { padding-block: 40px calc(40px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+/* REVEAL */
+[data-reveal] { transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
+[data-reveal].pre { opacity: 0; transform: translateY(22px); }
+
+@media (max-width: 760px) {
+  .problem, .tool { grid-template-columns: minmax(0, 1fr); }
+  .days { grid-template-columns: minmax(0, 1fr); }
+  .day, .day:nth-child(n) { grid-column: 1 / -1; }
+  h1 .l2 { padding-left: 0; }
+  .sun { top: 2%; right: -14%; }
+  .tip { min-height: 7em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sun, h1 .bar::before { animation: none; }
+  html { scroll-behavior: auto; }
+  [data-reveal], .day .in, .split .on, .meter i { transition: none; }
+  [data-reveal].pre { opacity: 1; transform: none; }
+}
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="sun" aria-hidden="true"></div>
+    <span class="plus p1" aria-hidden="true">+</span>
+    <span class="plus p2" aria-hidden="true">+</span>
+    <span class="plus p3" aria-hidden="true">+</span>
+    <h1>Real<span class="l2">Life <span class="bar">Week</span></span></h1>
+    <p class="hero-sub">7 days. 7 small tasks. No hard rules.</p>
+    <div class="hero-meta">
+      <span class="label">Social project · Tyumen · 2026</span><br>
+      <a class="go" href="#week">Start the week</a>
+    </div>
+  </header>
+
+  <section id="problem">
+    <div class="problem">
+      <div data-reveal>
+        <span class="label">The problem</span>
+        <div class="big">≈6<small>h</small></div>
+        <p class="big-note">Young people in Russia (12–24) spend almost 6 hours online on their phone. Every day.</p>
+      </div>
+      <div data-reveal>
+        <ul class="facts">
+          <li><b>People aged 12–24 spend <em>almost 6 hours</em> a day on mobile internet.</b><span>MEDIASCOPE · JAN–AUG 2024</span></li>
+          <li><b>Young people spend <em>almost 7 hours</em> online every day.</b><span>INSTITUTE FOR INTERNET DEVELOPMENT · JUNE 2025</span></li>
+          <li><b>People aged 18–24 use social networks and messengers about <em>8 hours</em> a day.</b><span>VCIOM SURVEY, REPORTED BY TASS</span></li>
+          <li><b>Most time: VK 129 min, TikTok 125 min, Telegram 123 min a day.</b><span>VCIOM SURVEY, REPORTED BY TASS</span></li>
+        </ul>
+        <p class="why">Online life is fun. But when we are always online, we have less time for friends, sport and sleep. Our question: <b>what can we do to help students spend more time in real life?</b></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="check">
+    <span class="label">Check your day</span>
+    <h2 data-reveal>How many hours are you online?</h2>
+    <div class="tool">
+      <div class="tool-card" data-reveal>
+        <label class="label" for="online">Move the slider</label>
+        <div class="hours"><output id="out" for="online">6</output><span>hours online today</span></div>
+        <input type="range" id="online" min="0" max="16" step="0.5" value="6" aria-describedby="verdict">
+        <div class="split" aria-hidden="true"><div class="on" id="onBar"></div><div class="off"></div></div>
+        <div class="split-l"><span id="lOn">Online 6 h</span><span id="lOff">Real life 10 h</span></div>
+        <p class="verdict" id="verdict" aria-live="polite"></p>
+      </div>
+      <div class="apps" data-reveal>
+        <h3>Which app takes your time?</h3>
+        <div class="chips" id="chips"></div>
+        <div class="tip" id="tip" aria-live="polite">Choose an app. Get one small idea.</div>
+        <p class="why" style="font-size:.9rem;color:var(--muted);margin-top:14px">We count 16 hours a day when you are awake.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="week">
+    <span class="label">The product</span>
+    <h2 data-reveal>Your Real Life Week</h2>
+    <p class="q" data-reveal>Do one task a day. Tap the card when it is done. You can use social media, but <b>not all day</b>.</p>
+    <div class="progress" data-reveal>
+      <div class="count" id="count">0 / 7</div>
+      <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0" id="meter"><i id="meterFill"></i></div>
+    </div>
+    <p class="done-msg" id="doneMsg" aria-live="polite"></p>
+    <div class="days" id="days"></div>
+    <button class="reset" id="reset" type="button">Start again</button>
+  </section>
+
+  <section class="src" id="sources">
+    <span class="label">Sources</span>
+    <ul>
+      <li><a href="https://mediascope.net/en/news/2658256/" target="_blank" rel="noopener">Mediascope. How Russians Use the Internet on Smartphones, 04.10.2024</a></li>
+      <li><a href="https://www.thestar.com.my/news/world/2025/06/20/russians-on-average-spend-55-hours-daily-on-smartphone-research" target="_blank" rel="noopener">Xinhua / The Star. Russians spend 5.5 hours daily on smartphone, 20.06.2025</a></li>
+      <li><a href="https://tass.com/society/1658935" target="_blank" rel="noopener">TASS. New poll shows how much Russians use social media (VCIOM)</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <span class="label">Real Life Week</span>
+    <span class="label">Social project · 1st year · English</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var TASKS = [
+    { t: "Lunch without your phone", d: "Put your phone in your bag. Talk to a friend for the whole lunch." },
+    { t: "Take a walk in the park", d: "Walk for 30 minutes. Do not take photos. Just look around." },
+    { t: "Play a board game", d: "Play any game with two or more people. Cards are fine too." },
+    { t: "Call, don't text", d: "Call a family member or a friend. Use your voice, not messages." },
+    { t: "Do some sport", d: "Go to the gym, the pool, or play football with friends." },
+    { t: "Find a new place in Tyumen", d: "Visit a café, a museum or a street you don't know." },
+    { t: "Meet your online friends live", d: "Invite a friend from Discord for a walk. No TikTok or Instagram for 2 hours." }
+  ];
+  var APPS = {
+    "TikTok": "Set a 20-minute timer. When it rings, put your phone in another room.",
+    "Instagram": "Don't post a story today. Tell it to a friend face to face.",
+    "Discord": "Ask your voice-chat friend to meet for a walk or a coffee.",
+    "YouTube": "Watch one video with a friend. Then talk about it for 10 minutes.",
+    "Telegram": "Call one friend. Don't write, just speak."
+  };
+  var KEY = "rlw-days";
+  function load() { try { var v = JSON.parse(localStorage.getItem(KEY)); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
+  function save(a) { try { localStorage.setItem(KEY, JSON.stringify(a)); } catch (e) {} }
+  var done = load();
+
+  /* week */
+  var daysEl = document.getElementById("days");
+  TASKS.forEach(function (task, i) {
+    var label = document.createElement("label");
+    label.className = "day";
+    label.setAttribute("data-reveal", "");
+    label.innerHTML =
+      '<input type="checkbox" id="day' + (i + 1) + '">' +
+      '<div class="in"><span class="n">' + (i + 1) + '</span>' +
+      '<div><h3>' + task.t + '</h3><p>' + task.d + '</p></div>' +
+      '<span class="box" aria-hidden="true">✓</span></div>';
+    var cb = label.querySelector("input");
+    cb.checked = done.indexOf(i) > -1;
+    cb.addEventListener("change", function () {
+      var k = done.indexOf(i);
+      if (cb.checked && k < 0) done.push(i);
+      if (!cb.checked && k > -1) done.splice(k, 1);
+      save(done); paint();
+    });
+    daysEl.appendChild(label);
+  });
+  var count = document.getElementById("count"), fill = document.getElementById("meterFill"),
+      meter = document.getElementById("meter"), msg = document.getElementById("doneMsg");
+  function paint() {
+    var n = done.length;
+    count.textContent = n + " / 7";
+    fill.style.width = (n / 7 * 100) + "%";
+    meter.setAttribute("aria-valuenow", n);
+    msg.textContent = n === 7 ? "Great job! You had a real life week." : n >= 4 ? "More than half. Keep going!" : n > 0 ? "Good start. One more task!" : "";
+  }
+  document.getElementById("reset").addEventListener("click", function () {
+    done = []; save(done);
+    daysEl.querySelectorAll("input").forEach(function (c) { c.checked = false; });
+    paint();
+  });
+  paint();
+
+  /* day check */
+  var range = document.getElementById("online"), out = document.getElementById("out"),
+      onBar = document.getElementById("onBar"), lOn = document.getElementById("lOn"),
+      lOff = document.getElementById("lOff"), verdict = document.getElementById("verdict");
+  function fmt(x) { return (Math.round(x * 2) / 2).toString().replace(".5", ".5"); }
+  function check() {
+    var h = parseFloat(range.value), r = 16 - h;
+    out.textContent = fmt(h);
+    onBar.style.width = (h / 16 * 100) + "%";
+    lOn.textContent = "Online " + fmt(h) + " h";
+    lOff.textContent = "Real life " + fmt(r) + " h";
+    var t;
+    if (h < 3) t = "Nice balance. You have lots of time for real life.";
+    else if (h < 5.5) t = "This is a bit less than the average young person in Russia (almost 6 h).";
+    else if (h <= 7) t = "This is like many young people in Russia: almost 6 to 7 hours a day.";
+    else t = "That is a lot. Try one task from the Real Life Week below.";
+    verdict.textContent = t;
+  }
+  range.addEventListener("input", check); check();
+
+  /* apps */
+  var chips = document.getElementById("chips"), tip = document.getElementById("tip");
+  Object.keys(APPS).forEach(function (name) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.textContent = name; b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", function () {
+      chips.querySelectorAll(".chip").forEach(function (c) { c.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", "true");
+      tip.textContent = APPS[name];
+    });
+    chips.appendChild(b);
+  });
+
+  /* reveal on scroll, visible by default */
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var els = document.querySelectorAll("[data-reveal]");
+  if ("IntersectionObserver" in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove("pre"); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) {
+      if (el.getBoundingClientRect().top > window.innerHeight) { el.classList.add("pre"); io.observe(el); }
+    });
+    setTimeout(function () { els.forEach(function (el) { el.classList.remove("pre"); }); }, 6000);
+  }
+})();
+</script>
